@@ -33,8 +33,8 @@ from pathlib import Path
 
 API = "https://api.openalex.org/works"
 TOOL_DIR = Path(__file__).resolve().parent
-__version__ = "0.1.0"
-UA = "sci-concentration/0.1 (https://github.com/parkjui92; local tool)"
+__version__ = "0.2.0"
+UA = "sci-concentration/0.2 (https://github.com/parkjui92; local tool)"
 KR = "KR"
 
 
@@ -304,9 +304,20 @@ def main():
     ap.add_argument("--api-key", default=os.environ.get("OPENALEX_API_KEY", "") or read_key_file(),
                     help="OpenAlex API 키(선택). env OPENALEX_API_KEY 또는 ~/.config/sci-concentration/openalex.key")
     ap.add_argument("--no-chart", action="store_true")
+    ap.add_argument("--patents", action="store_true", help="KIPRIS Plus 국내 특허(출원 추이·출원인 상위·상태)도 함께 — 키 필요")
+    ap.add_argument("--patent-term", help="특허 검색어(국문, 기본: 라벨에 한글이 있으면 라벨)")
+    ap.add_argument("--patent-field", default="title", choices=["title", "abstract", "word", "claim", "ipc"], help="특허 검색 필드(기본 title=발명의 명칭)")
+    ap.add_argument("--max-pages", type=int, default=10, help="특허 출원인 집계용 레코드 페이지 상한(500건/페이지)")
     a = ap.parse_args()
     if a.selftest:
-        return selftest()
+        rc = selftest()
+        try:
+            sys.path.insert(0, str(TOOL_DIR))  # python3 -I 는 스크립트 폴더를 sys.path에 넣지 않는다(3.11+ -P)
+            import kipris_patents
+            rc = max(rc, kipris_patents.selftest())
+        except ImportError:
+            print("  - kipris_patents.py 없음: 특허 검사 건너뜀")
+        return rc
     if not a.keyword:
         ap.error("키워드를 하나 이상 주세요 (또는 --selftest)")
     if a.query and len(a.keyword) > 1:
@@ -426,13 +437,25 @@ def run_one(keyword: str, a) -> int:
 - 검색식이 달라지면 건수가 크게 달라진다(구 검색 ↔ 낱말 검색, 제목·초록 ↔ 전문). 발표에 쓰기 전 검색식을 함께 적는다.
 - "0건"은 "연구가 없다"가 아니라 그 검색식·수록 범위 밖일 수 있다. OpenAlex는 영문 서지 중심이며 국문 학술지 수록이 부분적이다.
 - 국가·기관은 저자 소속 기준 중복 집계라 비율 합이 100%를 넘는다. 최근 연도는 수록 시차로 과소일 수 있다.
-- 특허는 이 도구에 없다. 키 없는 공개 특허 API가 확인되지 않았다(README).
+- 특허는 `--patents`(KIPRIS Plus 키 필요)로 국내 출원 추이·출원인 상위를 붙인다. 논문의 국가별 집중도에 해당하는 특허 국가별 집계는 제공하지 않는다(국내 공보 단위).
 
 ## 호출 기록
 {calls_md}
 """
+    pat_line = ""
+    if a.patents:
+        term = a.patent_term or (label if re.search(r"[가-힣]", label) else "")
+        if not term:
+            print("※ --patents: 국문 검색어가 없습니다. \"국문 라벨 / 영문 검색어\" 형태로 주거나 --patent-term 을 지정하세요. 특허는 건너뜁니다.", file=sys.stderr)
+        else:
+            sys.path.insert(0, str(TOOL_DIR))
+            import kipris_patents
+            r = kipris_patents.run(label, term, years, a.patent_field, out, a.max_pages, no_chart=a.no_chart)
+            summary += "\n" + r["summary_md"]
+            charts += r["charts"]; font_warn += r["font_warn"]
+            pat_line = f" · 특허 {r['total']:,}건(표본 {r['coverage']}%, 호출 {r['calls']}회, {r['sec']}s)"
     (out / "요약.md").write_text(summary, encoding="utf-8")
-    print(f"완료: {out}  (전체 {total:,}건 · 한국 {kr_total:,}건 {pct(kr_total,total)}% · 호출 {len(log)}회 · {elapsed}s · 글꼴 경고 {len(font_warn)})")
+    print(f"완료: {out}  (논문 {total:,}건 · 한국 {kr_total:,}건 {pct(kr_total,total)}% · 호출 {len(log)}회 · {elapsed}s · 글꼴 경고 {len(font_warn)}{pat_line})")
     for c in charts:
         print("  -", c)
     if font_warn:
