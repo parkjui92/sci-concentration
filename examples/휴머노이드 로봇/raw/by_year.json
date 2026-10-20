@@ -1,0 +1,98 @@
+{
+ "meta": {
+  "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. The mailto parameter doesn't raise this limit. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+  "count": 12433,
+  "db_response_time_ms": 74,
+  "page": 1,
+  "per_page": 200,
+  "groups_count": 11,
+  "x_query": {
+   "oql": "get works where published from 2015 through 2025\n  and title-abstract has (stemmed \"humanoid robot\");\nthen, group those works by year",
+   "x_new_oql": "get the count of works with (stemmed \"humanoid robot\") in the title or abstract by year from 2015–2025",
+   "oqo": {
+    "get_rows": "works",
+    "filter_rows": [
+     {
+      "column_id": "publication_year",
+      "value": 2015,
+      "operator": ">="
+     },
+     {
+      "column_id": "publication_year",
+      "value": 2025,
+      "operator": "<="
+     },
+     {
+      "column_id": "title_and_abstract.search",
+      "value": "\"humanoid robot\"",
+      "operator": "has"
+     }
+    ],
+    "group_by": [
+     {
+      "column_id": "publication_year"
+     }
+    ]
+   },
+   "url": "/works?filter=publication_year:2015-2025,title_and_abstract.search:%22humanoid robot%22&group_by=publication_year&per_page=200"
+  },
+  "cost_usd": 0.001
+ },
+ "group_by": [
+  {
+   "key": "2025",
+   "key_display_name": "2025",
+   "count": 1760
+  },
+  {
+   "key": "2018",
+   "key_display_name": "2018",
+   "count": 1249
+  },
+  {
+   "key": "2024",
+   "key_display_name": "2024",
+   "count": 1157
+  },
+  {
+   "key": "2016",
+   "key_display_name": "2016",
+   "count": 1149
+  },
+  {
+   "key": "2015",
+   "key_display_name": "2015",
+   "count": 1125
+  },
+  {
+   "key": "2019",
+   "key_display_name": "2019",
+   "count": 1120
+  },
+  {
+   "key": "2017",
+   "key_display_name": "2017",
+   "count": 1102
+  },
+  {
+   "key": "2021",
+   "key_display_name": "2021",
+   "count": 968
+  },
+  {
+   "key": "2023",
+   "key_display_name": "2023",
+   "count": 956
+  },
+  {
+   "key": "2020",
+   "key_display_name": "2020",
+   "count": 927
+  },
+  {
+   "key": "2022",
+   "key_display_name": "2022",
+   "count": 920
+  }
+ ]
+}

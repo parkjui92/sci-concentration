@@ -1,0 +1,1043 @@
+{
+ "meta": {
+  "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. The mailto parameter doesn't raise this limit. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+  "count": 42239,
+  "db_response_time_ms": 110,
+  "page": 1,
+  "per_page": 200,
+  "groups_count": 200,
+  "x_query": {
+   "oql": "get works where published from 2015 through 2025\n  and title-abstract has (stemmed \"autonomous driving\");\nthen, group those works by exact institution",
+   "x_new_oql": "get works where published from 2015 through 2025\n  and title-abstract has (stemmed \"autonomous driving\");\nthen, group those works by exact institution",
+   "oqo": {
+    "get_rows": "works",
+    "filter_rows": [
+     {
+      "column_id": "publication_year",
+      "value": 2015,
+      "operator": ">="
+     },
+     {
+      "column_id": "publication_year",
+      "value": 2025,
+      "operator": "<="
+     },
+     {
+      "column_id": "title_and_abstract.search",
+      "value": "\"autonomous driving\"",
+      "operator": "has"
+     }
+    ],
+    "group_by": [
+     {
+      "column_id": "authorships.institutions.id"
+     }
+    ]
+   },
+   "url": "/works?filter=publication_year:2015-2025,title_and_abstract.search:%22autonomous driving%22&group_by=authorships.institutions.id&per_page=200"
+  },
+  "cost_usd": 0.001
+ },
+ "group_by": [
+  {
+   "key": "https://openalex.org/I99065089",
+   "key_display_name": "Tsinghua University",
+   "count": 1198
+  },
+  {
+   "key": "https://openalex.org/I19820366",
+   "key_display_name": "Chinese Academy of Sciences",
+   "count": 851
+  },
+  {
+   "key": "https://openalex.org/I116953780",
+   "key_display_name": "Tongji University",
+   "count": 745
+  },
+  {
+   "key": "https://openalex.org/I183067930",
+   "key_display_name": "Shanghai Jiao Tong University",
+   "count": 565
+  },
+  {
+   "key": "https://openalex.org/I62916508",
+   "key_display_name": "Technical University of Munich",
+   "count": 541
+  },
+  {
+   "key": "https://openalex.org/I125839683",
+   "key_display_name": "Beijing Institute of Technology",
+   "count": 537
+  },
+  {
+   "key": "https://openalex.org/I82880672",
+   "key_display_name": "Beihang University",
+   "count": 487
+  },
+  {
+   "key": "https://openalex.org/I76130692",
+   "key_display_name": "Zhejiang University",
+   "count": 483
+  },
+  {
+   "key": "https://openalex.org/I4210165038",
+   "key_display_name": "University of Chinese Academy of Sciences",
+   "count": 417
+  },
+  {
+   "key": "https://openalex.org/I172675005",
+   "key_display_name": "Nanyang Technological University",
+   "count": 393
+  },
+  {
+   "key": "https://openalex.org/I76569877",
+   "key_display_name": "Southeast University",
+   "count": 378
+  },
+  {
+   "key": "https://openalex.org/I194450716",
+   "key_display_name": "Jilin University",
+   "count": 350
+  },
+  {
+   "key": "https://openalex.org/I150229711",
+   "key_display_name": "University of Electronic Science and Technology of China",
+   "count": 337
+  },
+  {
+   "key": "https://openalex.org/I37461747",
+   "key_display_name": "Wuhan University",
+   "count": 301
+  },
+  {
+   "key": "https://openalex.org/I87445476",
+   "key_display_name": "Xi'an Jiaotong University",
+   "count": 300
+  },
+  {
+   "key": "https://openalex.org/I4210112150",
+   "key_display_name": "Institute of Automation",
+   "count": 299
+  },
+  {
+   "key": "https://openalex.org/I21193070",
+   "key_display_name": "Beijing Jiaotong University",
+   "count": 297
+  },
+  {
+   "key": "https://openalex.org/I102335020",
+   "key_display_name": "Karlsruhe Institute of Technology",
+   "count": 288
+  },
+  {
+   "key": "https://openalex.org/I20231570",
+   "key_display_name": "Peking University",
+   "count": 287
+  },
+  {
+   "key": "https://openalex.org/I157773358",
+   "key_display_name": "Sun Yat-sen University",
+   "count": 284
+  },
+  {
+   "key": "https://openalex.org/I204983213",
+   "key_display_name": "Harbin Institute of Technology",
+   "count": 275
+  },
+  {
+   "key": "https://openalex.org/I196699116",
+   "key_display_name": "Wuhan University of Technology",
+   "count": 274
+  },
+  {
+   "key": "https://openalex.org/I139759216",
+   "key_display_name": "Beijing University of Posts and Telecommunications",
+   "count": 269
+  },
+  {
+   "key": "https://openalex.org/I74973139",
+   "key_display_name": "Carnegie Mellon University",
+   "count": 268
+  },
+  {
+   "key": "https://openalex.org/I95457486",
+   "key_display_name": "University of California, Berkeley",
+   "count": 262
+  },
+  {
+   "key": "https://openalex.org/I126520041",
+   "key_display_name": "University of Science and Technology of China",
+   "count": 260
+  },
+  {
+   "key": "https://openalex.org/I170215575",
+   "key_display_name": "National University of Defense Technology",
+   "count": 259
+  },
+  {
+   "key": "https://openalex.org/I200769079",
+   "key_display_name": "Hong Kong University of Science and Technology",
+   "count": 242
+  },
+  {
+   "key": "https://openalex.org/I74801974",
+   "key_display_name": "The University of Tokyo",
+   "count": 242
+  },
+  {
+   "key": "https://openalex.org/I25355098",
+   "key_display_name": "Chang'an University",
+   "count": 222
+  },
+  {
+   "key": "https://openalex.org/I24943067",
+   "key_display_name": "Fudan University",
+   "count": 217
+  },
+  {
+   "key": "https://openalex.org/I151746483",
+   "key_display_name": "University of Waterloo",
+   "count": 215
+  },
+  {
+   "key": "https://openalex.org/I17145004",
+   "key_display_name": "Northwestern Polytechnical University",
+   "count": 209
+  },
+  {
+   "key": "https://openalex.org/I16609230",
+   "key_display_name": "Hunan University",
+   "count": 205
+  },
+  {
+   "key": "https://openalex.org/I149594827",
+   "key_display_name": "Xidian University",
+   "count": 203
+  },
+  {
+   "key": "https://openalex.org/I47720641",
+   "key_display_name": "Huazhong University of Science and Technology",
+   "count": 202
+  },
+  {
+   "key": "https://openalex.org/I177725633",
+   "key_display_name": "Chinese University of Hong Kong",
+   "count": 200
+  },
+  {
+   "key": "https://openalex.org/I1294671590",
+   "key_display_name": "Centre National de la Recherche Scientifique",
+   "count": 198
+  },
+  {
+   "key": "https://openalex.org/I158842170",
+   "key_display_name": "Chongqing University",
+   "count": 197
+  },
+  {
+   "key": "https://openalex.org/I90610280",
+   "key_display_name": "South China University of Technology",
+   "count": 196
+  },
+  {
+   "key": "https://openalex.org/I14243506",
+   "key_display_name": "Hong Kong Polytechnic University",
+   "count": 193
+  },
+  {
+   "key": "https://openalex.org/I27837315",
+   "key_display_name": "University of Michigan",
+   "count": 193
+  },
+  {
+   "key": "https://openalex.org/I9224756",
+   "key_display_name": "Northeastern University",
+   "count": 189
+  },
+  {
+   "key": "https://openalex.org/I157485424",
+   "key_display_name": "Korea Advanced Institute of Science and Technology",
+   "count": 181
+  },
+  {
+   "key": "https://openalex.org/I36399199",
+   "key_display_name": "Nanjing University of Science and Technology",
+   "count": 180
+  },
+  {
+   "key": "https://openalex.org/I35440088",
+   "key_display_name": "ETH Zurich",
+   "count": 179
+  },
+  {
+   "key": "https://openalex.org/I139264467",
+   "key_display_name": "Seoul National University",
+   "count": 177
+  },
+  {
+   "key": "https://openalex.org/I889804353",
+   "key_display_name": "Robert Bosch (Germany)",
+   "count": 175
+  },
+  {
+   "key": "https://openalex.org/I2250955327",
+   "key_display_name": "Huawei Technologies (China)",
+   "count": 174
+  },
+  {
+   "key": "https://openalex.org/I889458895",
+   "key_display_name": "University of Hong Kong",
+   "count": 174
+  },
+  {
+   "key": "https://openalex.org/I165932596",
+   "key_display_name": "National University of Singapore",
+   "count": 171
+  },
+  {
+   "key": "https://openalex.org/I180726961",
+   "key_display_name": "Shenzhen University",
+   "count": 170
+  },
+  {
+   "key": "https://openalex.org/I27357992",
+   "key_display_name": "Dalian University of Technology",
+   "count": 169
+  },
+  {
+   "key": "https://openalex.org/I4575257",
+   "key_display_name": "Hanyang University",
+   "count": 167
+  },
+  {
+   "key": "https://openalex.org/I9842412",
+   "key_display_name": "Nanjing University of Aeronautics and Astronautics",
+   "count": 164
+  },
+  {
+   "key": "https://openalex.org/I113940042",
+   "key_display_name": "Shanghai University",
+   "count": 162
+  },
+  {
+   "key": "https://openalex.org/I63966007",
+   "key_display_name": "Massachusetts Institute of Technology",
+   "count": 162
+  },
+  {
+   "key": "https://openalex.org/I37796252",
+   "key_display_name": "Beijing University of Technology",
+   "count": 160
+  },
+  {
+   "key": "https://openalex.org/I1283382300",
+   "key_display_name": "BMW (Germany)",
+   "count": 157
+  },
+  {
+   "key": "https://openalex.org/I97018004",
+   "key_display_name": "Stanford University",
+   "count": 157
+  },
+  {
+   "key": "https://openalex.org/I168719708",
+   "key_display_name": "City University of Hong Kong",
+   "count": 152
+  },
+  {
+   "key": "https://openalex.org/I162868743",
+   "key_display_name": "Tianjin University",
+   "count": 151
+  },
+  {
+   "key": "https://openalex.org/I98301712",
+   "key_display_name": "Baidu (China)",
+   "count": 141
+  },
+  {
+   "key": "https://openalex.org/I4391012619",
+   "key_display_name": "Shanghai Artificial Intelligence Laboratory",
+   "count": 140
+  },
+  {
+   "key": "https://openalex.org/I185261750",
+   "key_display_name": "University of Toronto",
+   "count": 139
+  },
+  {
+   "key": "https://openalex.org/I143379178",
+   "key_display_name": "FZI Research Center for Information Technology",
+   "count": 137
+  },
+  {
+   "key": "https://openalex.org/I60134161",
+   "key_display_name": "Nagoya University",
+   "count": 134
+  },
+  {
+   "key": "https://openalex.org/I219193219",
+   "key_display_name": "Purdue University West Lafayette",
+   "count": 132
+  },
+  {
+   "key": "https://openalex.org/I4405261251",
+   "key_display_name": "The Hong Kong University of Science and Technology (Guangzhou)",
+   "count": 132
+  },
+  {
+   "key": "https://openalex.org/I92403157",
+   "key_display_name": "University of Science and Technology Beijing",
+   "count": 132
+  },
+  {
+   "key": "https://openalex.org/I139660479",
+   "key_display_name": "Central South University",
+   "count": 131
+  },
+  {
+   "key": "https://openalex.org/I204512498",
+   "key_display_name": "University of Macau",
+   "count": 131
+  },
+  {
+   "key": "https://openalex.org/I115592961",
+   "key_display_name": "Jiangsu University",
+   "count": 130
+  },
+  {
+   "key": "https://openalex.org/I4092182",
+   "key_display_name": "Graz University of Technology",
+   "count": 130
+  },
+  {
+   "key": "https://openalex.org/I66862912",
+   "key_display_name": "Chalmers University of Technology",
+   "count": 129
+  },
+  {
+   "key": "https://openalex.org/I197347611",
+   "key_display_name": "Korea University",
+   "count": 128
+  },
+  {
+   "key": "https://openalex.org/I36258959",
+   "key_display_name": "University of California San Diego",
+   "count": 126
+  },
+  {
+   "key": "https://openalex.org/I848706",
+   "key_display_name": "Sungkyunkwan University",
+   "count": 125
+  },
+  {
+   "key": "https://openalex.org/I157725225",
+   "key_display_name": "University of Illinois Urbana-Champaign",
+   "count": 123
+  },
+  {
+   "key": "https://openalex.org/I10535382",
+   "key_display_name": "Chongqing University of Posts and Telecommunications",
+   "count": 122
+  },
+  {
+   "key": "https://openalex.org/I204250578",
+   "key_display_name": "University of California, Irvine",
+   "count": 121
+  },
+  {
+   "key": "https://openalex.org/I40120149",
+   "key_display_name": "University of Oxford",
+   "count": 121
+  },
+  {
+   "key": "https://openalex.org/I881766915",
+   "key_display_name": "Nanjing University",
+   "count": 118
+  },
+  {
+   "key": "https://openalex.org/I191208505",
+   "key_display_name": "Xiamen University",
+   "count": 117
+  },
+  {
+   "key": "https://openalex.org/I142401562",
+   "key_display_name": "Electronics and Telecommunications Research Institute",
+   "count": 116
+  },
+  {
+   "key": "https://openalex.org/I3045169105",
+   "key_display_name": "Southern University of Science and Technology",
+   "count": 115
+  },
+  {
+   "key": "https://openalex.org/I154099455",
+   "key_display_name": "Shandong University",
+   "count": 114
+  },
+  {
+   "key": "https://openalex.org/I4577782",
+   "key_display_name": "Technische Universität Berlin",
+   "count": 114
+  },
+  {
+   "key": "https://openalex.org/I100066346",
+   "key_display_name": "University of Stuttgart",
+   "count": 113
+  },
+  {
+   "key": "https://openalex.org/I4210156768",
+   "key_display_name": "BMW Group (Germany)",
+   "count": 110
+  },
+  {
+   "key": "https://openalex.org/I66867065",
+   "key_display_name": "East China Normal University",
+   "count": 110
+  },
+  {
+   "key": "https://openalex.org/I41198531",
+   "key_display_name": "Nanjing University of Posts and Telecommunications",
+   "count": 107
+  },
+  {
+   "key": "https://openalex.org/I4392738231",
+   "key_display_name": "State Key Laboratory of Automotive Simulation and Control",
+   "count": 106
+  },
+  {
+   "key": "https://openalex.org/I4210094894",
+   "key_display_name": "China Automotive Technology and Research Center",
+   "count": 105
+  },
+  {
+   "key": "https://openalex.org/I4210136793",
+   "key_display_name": "Peng Cheng Laboratory",
+   "count": 105
+  },
+  {
+   "key": "https://openalex.org/I98358874",
+   "key_display_name": "Delft University of Technology",
+   "count": 105
+  },
+  {
+   "key": "https://openalex.org/I93860229",
+   "key_display_name": "Politecnico di Milano",
+   "count": 103
+  },
+  {
+   "key": "https://openalex.org/I129604602",
+   "key_display_name": "The University of Sydney",
+   "count": 102
+  },
+  {
+   "key": "https://openalex.org/I177477856",
+   "key_display_name": "Politecnico di Torino",
+   "count": 102
+  },
+  {
+   "key": "https://openalex.org/I4800084",
+   "key_display_name": "Southwest Jiaotong University",
+   "count": 102
+  },
+  {
+   "key": "https://openalex.org/I16365422",
+   "key_display_name": "Hefei University of Technology",
+   "count": 101
+  },
+  {
+   "key": "https://openalex.org/I196349391",
+   "key_display_name": "Universität Ulm",
+   "count": 101
+  },
+  {
+   "key": "https://openalex.org/I887968799",
+   "key_display_name": "RWTH Aachen University",
+   "count": 100
+  },
+  {
+   "key": "https://openalex.org/I86987016",
+   "key_display_name": "KTH Royal Institute of Technology",
+   "count": 98
+  },
+  {
+   "key": "https://openalex.org/I114112103",
+   "key_display_name": "Leibniz University Hannover",
+   "count": 96
+  },
+  {
+   "key": "https://openalex.org/I2898391981",
+   "key_display_name": "Deutsches Zentrum für Luft- und Raumfahrt e. V. (DLR)",
+   "count": 96
+  },
+  {
+   "key": "https://openalex.org/I86519309",
+   "key_display_name": "The University of Texas at Austin",
+   "count": 94
+  },
+  {
+   "key": "https://openalex.org/I4210145761",
+   "key_display_name": "Shenzhen Institutes of Advanced Technology",
+   "count": 93
+  },
+  {
+   "key": "https://openalex.org/I143868143",
+   "key_display_name": "Anhui University",
+   "count": 92
+  },
+  {
+   "key": "https://openalex.org/I193775966",
+   "key_display_name": "Yonsei University",
+   "count": 92
+  },
+  {
+   "key": "https://openalex.org/I130701444",
+   "key_display_name": "Georgia Institute of Technology",
+   "count": 91
+  },
+  {
+   "key": "https://openalex.org/I31419693",
+   "key_display_name": "Kyungpook National University",
+   "count": 90
+  },
+  {
+   "key": "https://openalex.org/I4210127875",
+   "key_display_name": "Nvidia (United States)",
+   "count": 88
+  },
+  {
+   "key": "https://openalex.org/I94509681",
+   "key_display_name": "Technische Universität Braunschweig",
+   "count": 88
+  },
+  {
+   "key": "https://openalex.org/I220619192",
+   "key_display_name": "Valeo (France)",
+   "count": 86
+  },
+  {
+   "key": "https://openalex.org/I80947539",
+   "key_display_name": "Fuzhou University",
+   "count": 85
+  },
+  {
+   "key": "https://openalex.org/I9617848",
+   "key_display_name": "Universitat Politècnica de Catalunya",
+   "count": 85
+  },
+  {
+   "key": "https://openalex.org/I148366613",
+   "key_display_name": "National Yang Ming Chiao Tung University",
+   "count": 82
+  },
+  {
+   "key": "https://openalex.org/I181369854",
+   "key_display_name": "Friedrich-Alexander-Universität Erlangen-Nürnberg",
+   "count": 82
+  },
+  {
+   "key": "https://openalex.org/I50760025",
+   "key_display_name": "Hangzhou Dianzi University",
+   "count": 82
+  },
+  {
+   "key": "https://openalex.org/I57206974",
+   "key_display_name": "New York University",
+   "count": 82
+  },
+  {
+   "key": "https://openalex.org/I141962983",
+   "key_display_name": "Shanghai University of Engineering Science",
+   "count": 81
+  },
+  {
+   "key": "https://openalex.org/I52357470",
+   "key_display_name": "The Ohio State University",
+   "count": 81
+  },
+  {
+   "key": "https://openalex.org/I110273157",
+   "key_display_name": "Kookmin University",
+   "count": 80
+  },
+  {
+   "key": "https://openalex.org/I38877650",
+   "key_display_name": "Zhengzhou University",
+   "count": 80
+  },
+  {
+   "key": "https://openalex.org/I4405271667",
+   "key_display_name": "Beijing National Research Center for Information Science and Technology",
+   "count": 79
+  },
+  {
+   "key": "https://openalex.org/I150744194",
+   "key_display_name": "Waseda University",
+   "count": 78
+  },
+  {
+   "key": "https://openalex.org/I4210118728",
+   "key_display_name": "State Key Laboratory of Information Engineering in Surveying Mapping and Remote Sensing",
+   "count": 78
+  },
+  {
+   "key": "https://openalex.org/I4401727009",
+   "key_display_name": "Sensetime (China)",
+   "count": 78
+  },
+  {
+   "key": "https://openalex.org/I83019370",
+   "key_display_name": "Eindhoven University of Technology",
+   "count": 78
+  },
+  {
+   "key": "https://openalex.org/I891521709",
+   "key_display_name": "Daimler (Germany)",
+   "count": 78
+  },
+  {
+   "key": "https://openalex.org/I91045830",
+   "key_display_name": "Texas A&M University",
+   "count": 78
+  },
+  {
+   "key": "https://openalex.org/I1174212",
+   "key_display_name": "University of Southern California",
+   "count": 77
+  },
+  {
+   "key": "https://openalex.org/I153718931",
+   "key_display_name": "University of Ottawa",
+   "count": 77
+  },
+  {
+   "key": "https://openalex.org/I114017466",
+   "key_display_name": "University of Technology Sydney",
+   "count": 76
+  },
+  {
+   "key": "https://openalex.org/I201448701",
+   "key_display_name": "University of Washington",
+   "count": 76
+  },
+  {
+   "key": "https://openalex.org/I31512782",
+   "key_display_name": "Technische Universität Darmstadt",
+   "count": 76
+  },
+  {
+   "key": "https://openalex.org/I4210090176",
+   "key_display_name": "Institute of Computing Technology",
+   "count": 75
+  },
+  {
+   "key": "https://openalex.org/I4405263052",
+   "key_display_name": "Tsinghua Shenzhen International Graduate School",
+   "count": 75
+  },
+  {
+   "key": "https://openalex.org/I145286018",
+   "key_display_name": "SRM Institute of Science and Technology",
+   "count": 74
+  },
+  {
+   "key": "https://openalex.org/I1456306",
+   "key_display_name": "North China University of Technology",
+   "count": 74
+  },
+  {
+   "key": "https://openalex.org/I189268942",
+   "key_display_name": "Universidad de Alcalá",
+   "count": 74
+  },
+  {
+   "key": "https://openalex.org/I4210116924",
+   "key_display_name": "Chinese University of Hong Kong, Shenzhen",
+   "count": 74
+  },
+  {
+   "key": "https://openalex.org/I859038795",
+   "key_display_name": "Virginia Tech",
+   "count": 74
+  },
+  {
+   "key": "https://openalex.org/I1291425158",
+   "key_display_name": "Google (United States)",
+   "count": 73
+  },
+  {
+   "key": "https://openalex.org/I161318765",
+   "key_display_name": "University of California, Los Angeles",
+   "count": 73
+  },
+  {
+   "key": "https://openalex.org/I111950717",
+   "key_display_name": "Macau University of Science and Technology",
+   "count": 72
+  },
+  {
+   "key": "https://openalex.org/I151727225",
+   "key_display_name": "Harbin Engineering University",
+   "count": 72
+  },
+  {
+   "key": "https://openalex.org/I78650965",
+   "key_display_name": "Technische Universität Dresden",
+   "count": 72
+  },
+  {
+   "key": "https://openalex.org/I4210126639",
+   "key_display_name": "Valeo (Ireland)",
+   "count": 71
+  },
+  {
+   "key": "https://openalex.org/I7882870",
+   "key_display_name": "University of Glasgow",
+   "count": 71
+  },
+  {
+   "key": "https://openalex.org/I1326498283",
+   "key_display_name": "Institut national de recherche en sciences et technologies du numérique",
+   "count": 70
+  },
+  {
+   "key": "https://openalex.org/I1343180700",
+   "key_display_name": "Intel (United States)",
+   "count": 70
+  },
+  {
+   "key": "https://openalex.org/I139024713",
+   "key_display_name": "Guangdong University of Technology",
+   "count": 70
+  },
+  {
+   "key": "https://openalex.org/I184597095",
+   "key_display_name": "National Institute of Informatics",
+   "count": 70
+  },
+  {
+   "key": "https://openalex.org/I45928872",
+   "key_display_name": "Alibaba Group (China)",
+   "count": 70
+  },
+  {
+   "key": "https://openalex.org/I69356397",
+   "key_display_name": "Xi’an Jiaotong-Liverpool University",
+   "count": 70
+  },
+  {
+   "key": "https://openalex.org/I29770179",
+   "key_display_name": "Budapest University of Technology and Economics",
+   "count": 69
+  },
+  {
+   "key": "https://openalex.org/I12912129",
+   "key_display_name": "Northeastern University",
+   "count": 68
+  },
+  {
+   "key": "https://openalex.org/I148128674",
+   "key_display_name": "University of Shanghai for Science and Technology",
+   "count": 68
+  },
+  {
+   "key": "https://openalex.org/I55712492",
+   "key_display_name": "Zhejiang University of Technology",
+   "count": 68
+  },
+  {
+   "key": "https://openalex.org/I1319473763",
+   "key_display_name": "Volkswagen Group (Germany)",
+   "count": 67
+  },
+  {
+   "key": "https://openalex.org/I118136607",
+   "key_display_name": "General Motors (United States)",
+   "count": 66
+  },
+  {
+   "key": "https://openalex.org/I1301102746",
+   "key_display_name": "Renault (France)",
+   "count": 66
+  },
+  {
+   "key": "https://openalex.org/I135310074",
+   "key_display_name": "University of Wisconsin–Madison",
+   "count": 66
+  },
+  {
+   "key": "https://openalex.org/I9927081",
+   "key_display_name": "Aalto University",
+   "count": 66
+  },
+  {
+   "key": "https://openalex.org/I154425047",
+   "key_display_name": "University of Alberta",
+   "count": 65
+  },
+  {
+   "key": "https://openalex.org/I30809798",
+   "key_display_name": "ShanghaiTech University",
+   "count": 65
+  },
+  {
+   "key": "https://openalex.org/I3923682",
+   "key_display_name": "Soochow University",
+   "count": 65
+  },
+  {
+   "key": "https://openalex.org/I91807558",
+   "key_display_name": "National Cheng Kung University",
+   "count": 65
+  },
+  {
+   "key": "https://openalex.org/I145847075",
+   "key_display_name": "TU Wien",
+   "count": 64
+  },
+  {
+   "key": "https://openalex.org/I193352282",
+   "key_display_name": "Daegu Gyeongbuk Institute of Science and Technology",
+   "count": 64
+  },
+  {
+   "key": "https://openalex.org/I200845125",
+   "key_display_name": "Nanjing University of Information Science and Technology",
+   "count": 64
+  },
+  {
+   "key": "https://openalex.org/I80143920",
+   "key_display_name": "Shandong University of Science and Technology",
+   "count": 64
+  },
+  {
+   "key": "https://openalex.org/I4210106192",
+   "key_display_name": "Technische Hochschule Ingolstadt",
+   "count": 63
+  },
+  {
+   "key": "https://openalex.org/I47508984",
+   "key_display_name": "Imperial College London",
+   "count": 63
+  },
+  {
+   "key": "https://openalex.org/I241749",
+   "key_display_name": "University of Cambridge",
+   "count": 62
+  },
+  {
+   "key": "https://openalex.org/I39333907",
+   "key_display_name": "Yanshan University",
+   "count": 62
+  },
+  {
+   "key": "https://openalex.org/I4210127843",
+   "key_display_name": "First Automotive Works (China)",
+   "count": 62
+  },
+  {
+   "key": "https://openalex.org/I50632499",
+   "key_display_name": "Chongqing University of Technology",
+   "count": 62
+  },
+  {
+   "key": "https://openalex.org/I56934997",
+   "key_display_name": "Changsha University of Science and Technology",
+   "count": 62
+  },
+  {
+   "key": "https://openalex.org/I37987034",
+   "key_display_name": "Guangzhou University",
+   "count": 61
+  },
+  {
+   "key": "https://openalex.org/I66946132",
+   "key_display_name": "University of Maryland, College Park",
+   "count": 61
+  },
+  {
+   "key": "https://openalex.org/I4210120115",
+   "key_display_name": "Robert Bosch (United States)",
+   "count": 60
+  },
+  {
+   "key": "https://openalex.org/I49946491",
+   "key_display_name": "Hyundai Motors (South Korea)",
+   "count": 60
+  },
+  {
+   "key": "https://openalex.org/I98677209",
+   "key_display_name": "University of Edinburgh",
+   "count": 60
+  },
+  {
+   "key": "https://openalex.org/I146655781",
+   "key_display_name": "University of Liverpool",
+   "count": 59
+  },
+  {
+   "key": "https://openalex.org/I4210128818",
+   "key_display_name": "Institute of Software",
+   "count": 59
+  },
+  {
+   "key": "https://openalex.org/I81556334",
+   "key_display_name": "Amrita Vishwa Vidyapeetham",
+   "count": 59
+  },
+  {
+   "key": "https://openalex.org/I96908189",
+   "key_display_name": "Xinjiang University",
+   "count": 59
+  },
+  {
+   "key": "https://openalex.org/I31746571",
+   "key_display_name": "UNSW Sydney",
+   "count": 58
+  },
+  {
+   "key": "https://openalex.org/I33213144",
+   "key_display_name": "University of Florida",
+   "count": 58
+  },
+  {
+   "key": "https://openalex.org/I39555362",
+   "key_display_name": "University of Warwick",
+   "count": 58
+  },
+  {
+   "key": "https://openalex.org/I5343935",
+   "key_display_name": "Guilin University of Electronic Technology",
+   "count": 58
+  },
+  {
+   "key": "https://openalex.org/I4392021250",
+   "key_display_name": "State Key Laboratory of Networking and Switching Technology",
+   "count": 57
+  },
+  {
+   "key": "https://openalex.org/I48071105",
+   "key_display_name": "Anstalt für Verbrennungskraftmaschinen List (Austria)",
+   "count": 57
+  },
+  {
+   "key": "https://openalex.org/I78577930",
+   "key_display_name": "Columbia University",
+   "count": 57
+  },
+  {
+   "key": "https://openalex.org/I115228651",
+   "key_display_name": "Agency for Science, Technology and Research",
+   "count": 56
+  },
+  {
+   "key": "https://openalex.org/I185443292",
+   "key_display_name": "Wayne State University",
+   "count": 56
+  },
+  {
+   "key": "https://openalex.org/I4387153628",
+   "key_display_name": "Volvo Cars (Sweden)",
+   "count": 56
+  }
+ ]
+}

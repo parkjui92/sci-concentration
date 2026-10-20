@@ -1,0 +1,287 @@
+{
+ "meta": {
+  "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. The mailto parameter doesn't raise this limit. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+  "count": 8116,
+  "db_response_time_ms": 11,
+  "page": 1,
+  "per_page": 50,
+  "groups_count": 50,
+  "x_query": {
+   "oql": "get countries that published works where published in 2024\n  and title-abstract has (stemmed \"autonomous driving\")",
+   "x_new_oql": "get the count of works from 2024 with (stemmed \"autonomous driving\") in the title or abstract by country",
+   "oqo": {
+    "get_rows": "works",
+    "filter_rows": [
+     {
+      "column_id": "publication_year",
+      "value": 2024
+     },
+     {
+      "column_id": "title_and_abstract.search",
+      "value": "\"autonomous driving\"",
+      "operator": "has"
+     }
+    ],
+    "group_by": [
+     {
+      "column_id": "authorships.countries"
+     }
+    ]
+   },
+   "url": "/works?filter=publication_year:2024,title_and_abstract.search:%22autonomous driving%22&group_by=authorships.countries&per_page=50"
+  },
+  "cost_usd": 0.001
+ },
+ "group_by": [
+  {
+   "key": "https://openalex.org/countries/CN",
+   "key_display_name": "China",
+   "count": 3824
+  },
+  {
+   "key": "https://openalex.org/countries/US",
+   "key_display_name": "United States",
+   "count": 851
+  },
+  {
+   "key": "https://openalex.org/countries/DE",
+   "key_display_name": "Germany",
+   "count": 451
+  },
+  {
+   "key": "https://openalex.org/countries/IN",
+   "key_display_name": "India",
+   "count": 437
+  },
+  {
+   "key": "https://openalex.org/countries/KR",
+   "key_display_name": "South Korea",
+   "count": 387
+  },
+  {
+   "key": "https://openalex.org/countries/JP",
+   "key_display_name": "Japan",
+   "count": 280
+  },
+  {
+   "key": "https://openalex.org/countries/GB",
+   "key_display_name": "United Kingdom",
+   "count": 257
+  },
+  {
+   "key": "https://openalex.org/countries/HK",
+   "key_display_name": "Hong Kong",
+   "count": 195
+  },
+  {
+   "key": "https://openalex.org/countries/CA",
+   "key_display_name": "Canada",
+   "count": 176
+  },
+  {
+   "key": "https://openalex.org/countries/SG",
+   "key_display_name": "Singapore",
+   "count": 157
+  },
+  {
+   "key": "https://openalex.org/countries/AU",
+   "key_display_name": "Australia",
+   "count": 154
+  },
+  {
+   "key": "https://openalex.org/countries/FR",
+   "key_display_name": "France",
+   "count": 128
+  },
+  {
+   "key": "https://openalex.org/countries/IT",
+   "key_display_name": "Italy",
+   "count": 117
+  },
+  {
+   "key": "https://openalex.org/countries/ES",
+   "key_display_name": "Spain",
+   "count": 87
+  },
+  {
+   "key": "https://openalex.org/countries/SE",
+   "key_display_name": "Sweden",
+   "count": 81
+  },
+  {
+   "key": "https://openalex.org/countries/MO",
+   "key_display_name": "Macao",
+   "count": 78
+  },
+  {
+   "key": "https://openalex.org/countries/TW",
+   "key_display_name": "Taiwan",
+   "count": 73
+  },
+  {
+   "key": "https://openalex.org/countries/NL",
+   "key_display_name": "Netherlands",
+   "count": 57
+  },
+  {
+   "key": "https://openalex.org/countries/SA",
+   "key_display_name": "Saudi Arabia",
+   "count": 56
+  },
+  {
+   "key": "https://openalex.org/countries/MY",
+   "key_display_name": "Malaysia",
+   "count": 47
+  },
+  {
+   "key": "https://openalex.org/countries/PT",
+   "key_display_name": "Portugal",
+   "count": 46
+  },
+  {
+   "key": "https://openalex.org/countries/AT",
+   "key_display_name": "Austria",
+   "count": 43
+  },
+  {
+   "key": "https://openalex.org/countries/CH",
+   "key_display_name": "Switzerland",
+   "count": 42
+  },
+  {
+   "key": "https://openalex.org/countries/TR",
+   "key_display_name": "Turkey",
+   "count": 38
+  },
+  {
+   "key": "https://openalex.org/countries/PK",
+   "key_display_name": "Pakistan",
+   "count": 35
+  },
+  {
+   "key": "https://openalex.org/countries/AE",
+   "key_display_name": "United Arab Emirates",
+   "count": 34
+  },
+  {
+   "key": "https://openalex.org/countries/FI",
+   "key_display_name": "Finland",
+   "count": 34
+  },
+  {
+   "key": "https://openalex.org/countries/BD",
+   "key_display_name": "Bangladesh",
+   "count": 29
+  },
+  {
+   "key": "https://openalex.org/countries/IE",
+   "key_display_name": "Ireland",
+   "count": 29
+  },
+  {
+   "key": "https://openalex.org/countries/BR",
+   "key_display_name": "Brazil",
+   "count": 27
+  },
+  {
+   "key": "https://openalex.org/countries/EG",
+   "key_display_name": "Egypt",
+   "count": 27
+  },
+  {
+   "key": "https://openalex.org/countries/RU",
+   "key_display_name": "Russia",
+   "count": 27
+  },
+  {
+   "key": "https://openalex.org/countries/IQ",
+   "key_display_name": "Iraq",
+   "count": 26
+  },
+  {
+   "key": "https://openalex.org/countries/RO",
+   "key_display_name": "Romania",
+   "count": 26
+  },
+  {
+   "key": "https://openalex.org/countries/GR",
+   "key_display_name": "Greece",
+   "count": 25
+  },
+  {
+   "key": "https://openalex.org/countries/BE",
+   "key_display_name": "Belgium",
+   "count": 24
+  },
+  {
+   "key": "https://openalex.org/countries/HU",
+   "key_display_name": "Hungary",
+   "count": 23
+  },
+  {
+   "key": "https://openalex.org/countries/VN",
+   "key_display_name": "Vietnam",
+   "count": 23
+  },
+  {
+   "key": "https://openalex.org/countries/ID",
+   "key_display_name": "Indonesia",
+   "count": 22
+  },
+  {
+   "key": "https://openalex.org/countries/NO",
+   "key_display_name": "Norway",
+   "count": 22
+  },
+  {
+   "key": "https://openalex.org/countries/PL",
+   "key_display_name": "Poland",
+   "count": 22
+  },
+  {
+   "key": "https://openalex.org/countries/CZ",
+   "key_display_name": "Czechia",
+   "count": 18
+  },
+  {
+   "key": "https://openalex.org/countries/MA",
+   "key_display_name": "Morocco",
+   "count": 18
+  },
+  {
+   "key": "https://openalex.org/countries/IR",
+   "key_display_name": "Iran",
+   "count": 17
+  },
+  {
+   "key": "https://openalex.org/countries/TH",
+   "key_display_name": "Thailand",
+   "count": 17
+  },
+  {
+   "key": "https://openalex.org/countries/EE",
+   "key_display_name": "Estonia",
+   "count": 16
+  },
+  {
+   "key": "https://openalex.org/countries/IL",
+   "key_display_name": "Israel",
+   "count": 16
+  },
+  {
+   "key": "https://openalex.org/countries/DZ",
+   "key_display_name": "Algeria",
+   "count": 14
+  },
+  {
+   "key": "https://openalex.org/countries/MX",
+   "key_display_name": "Mexico",
+   "count": 13
+  },
+  {
+   "key": "https://openalex.org/countries/DK",
+   "key_display_name": "Denmark",
+   "count": 12
+  }
+ ]
+}

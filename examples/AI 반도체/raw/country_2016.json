@@ -1,0 +1,72 @@
+{
+ "meta": {
+  "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. The mailto parameter doesn't raise this limit. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+  "count": 6,
+  "db_response_time_ms": 17,
+  "page": 1,
+  "per_page": 50,
+  "groups_count": 3,
+  "x_query": {
+   "oql": "get countries that published works where published in 2016\n  and title-abstract has (stemmed \"AI accelerator\" OR stemmed \"AI chip\" OR stemmed \"AI semiconductor\" OR stemmed \"neural processing unit\")",
+   "x_new_oql": "get the count of works from 2016 with (stemmed \"AI accelerator\" OR stemmed \"AI chip\" OR stemmed \"AI semiconductor\" OR stemmed \"neural processing unit\") in the title or abstract by country",
+   "oqo": {
+    "get_rows": "works",
+    "filter_rows": [
+     {
+      "column_id": "publication_year",
+      "value": 2016
+     },
+     {
+      "join": "or",
+      "filters": [
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"AI accelerator\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"AI chip\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"AI semiconductor\"",
+        "operator": "has"
+       },
+       {
+        "column_id": "title_and_abstract.search",
+        "value": "\"neural processing unit\"",
+        "operator": "has"
+       }
+      ]
+     }
+    ],
+    "group_by": [
+     {
+      "column_id": "authorships.countries"
+     }
+    ]
+   },
+   "url": "/works?filter=publication_year:2016,title_and_abstract.search:%22AI accelerator%22|%22AI chip%22|%22AI semiconductor%22|%22neural processing unit%22&group_by=authorships.countries&per_page=50"
+  },
+  "cost_usd": 0.001
+ },
+ "group_by": [
+  {
+   "key": "https://openalex.org/countries/CN",
+   "key_display_name": "China",
+   "count": 4
+  },
+  {
+   "key": "https://openalex.org/countries/US",
+   "key_display_name": "United States",
+   "count": 4
+  },
+  {
+   "key": "https://openalex.org/countries/AU",
+   "key_display_name": "Australia",
+   "count": 1
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+.DS_Store
+**/.DS_Store
+* [0-9].*
+* [0-9]/
+__pycache__/
+*.pyc
+out/
+.env
