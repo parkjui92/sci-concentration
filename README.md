@@ -14,6 +14,27 @@ and retrieval date. Each user needs their own (free) API keys; see "키 발급".
 - 비용: 논문 키워드 1건당 호출 16회(`--quick` 5회), 약 10초. 특허는 연도 수 + 레코드 페이지 수(기본 최대 10) ≈ 21회, 약 17초.
 - **키는 각자 발급**합니다(아래 「키 발급」). 키는 저장소에 넣지 않습니다.
 
+## 언제 쓰면 좋은가
+
+- **유망기술 후보를 좁힐 때**: 같은 기간·검색 범위로 후보 기술의 논문 증가와 주요 참여국을 비교합니다. 검색어 동의어를 함께 검토해야 비교가 의미 있습니다.
+- **사업기획의 기술동향 절을 준비할 때**: 연도별 표, 한국 참여 비율, 주요 기관을 먼저 만들고 원문 논문을 읽을 대상을 고릅니다.
+- **국내 특허 활동을 함께 살필 때**: 논문과 특허의 흐름이 같은 방향인지 탐색합니다. 논문 건수와 특허 출원 건수는 서로 다른 모집단이므로 합산하지 않습니다.
+
+강점은 **검색식·조회일·집계 방식·원 응답이 표와 함께 남는다**는 점입니다. 같은 검색을 반복하거나 보고서 수치를 되짚기 쉽고, 그래프 도구가 없어도 CSV와 Markdown 표는 사용할 수 있습니다. 국가 HHI는 논문에만 제공하며, 기관·특허 출원인은 상위 목록을 보여 줍니다. 기술의 우수성이나 투자 타당성을 자동 판정하지는 않습니다.
+
+## 처음이라면 이렇게 시작하세요
+
+아래 「설치」를 마친 뒤, 먼저 논문만 작은 범위로 실행해 보세요. API 조회에는 인터넷이 필요합니다.
+
+```bash
+python3 -I concentrate.py "자율주행 / autonomous driving" \
+  --years 2020-2025 --quick --no-chart --out out/first-look
+```
+
+`out/first-look/요약.md`에서 검색식과 건수를 확인하고 `표1_연도추이.csv`를 열어 봅니다. `--quick`은 연도별 한국 **순위** 조회를 생략하며, 한국 참여 건수·비율은 남습니다. 다음에는 `--no-chart`를 빼서 그림을 만들고, 특허 키를 준비했다면 `--patents`를 추가합니다. 새 검색이나 조회일은 별도 `--out` 폴더로 보관하세요(같은 경로의 산출물은 갱신됩니다).
+
+「실행 예」의 숫자는 2026-10-20 조회 결과입니다. 오늘 실행한 결과와 달라도 검색식·기간·조회일을 먼저 대조하세요.
+
 ## 키 발급 (각자, 무료)
 
 | 소스 | 어디서 | 한도 | 키를 두는 곳(우선순위 순) |
@@ -134,7 +155,7 @@ mkdir -p ~/.config/sci-concentration && chmod 700 ~/.config/sci-concentration
 echo "..." > ~/.config/sci-concentration/openalex.key && chmod 600 ~/.config/sci-concentration/openalex.key
 ```
 
-한도 상세: https://help.openalex.org/how-to-use-the-api/rate-limits-and-authentication
+최신 인증·한도는 [OpenAlex 공식 안내](https://help.openalex.org/api/authentication/)에서 확인하세요. 위 호출 시간·예산 소진 사례는 당시 실행 기록이며, 요금 정책이나 응답 속도의 보장이 아닙니다.
 
 ## 특허 수치의 뜻과 함정 (KIPRIS Plus)
 
@@ -162,6 +183,30 @@ echo "..." > ~/.config/sci-concentration/openalex.key && chmod 600 ~/.config/sci
 | 휴머노이드 로봇 | "humanoid robot" | 12,433 | 377 (3.0%) | 9위 | 635 | abstract "휴머노이드 로봇" | 82 | (요약_특허.md) |
 
 논문 16회·약 10초, 특허 21회·약 17초(자율주행). 특허 검색어가 좁으면(AI 반도체 title 38건) `--patent-field abstract`로 넓힌다.
+
+## 자주 막히는 지점
+
+| 증상 | 확인할 것 |
+|---|---|
+| `HTTP 429` | 잠시 뒤 재시도하고 일일 예산·API 키 상태를 확인합니다. 검색 범위 축소만으로 일일 예산이 복구되지는 않습니다. |
+| 논문이 너무 적음 | 국문 라벨 뒤에 영문 검색어를 넣고, 동의어를 `--query`의 `OR`로 묶습니다. |
+| KIPRIS `101` | 키 발급뿐 아니라 해당 API의 활용 신청도 완료했는지 확인합니다. |
+| 표는 있는데 그림이 없음 | `matplotlib` 설치 여부와 `--no-chart` 옵션을 확인합니다. |
+| 잘못된 연도·페이지 수 | `--years 2020-2025`, `--max-pages 10`처럼 지정합니다. 역순 연도와 0 이하 페이지는 조회 전에 차단합니다. |
+
+## R&D 정책평가 도구 묶음에서의 위치
+
+필요한 단계만 골라 사용할 수 있습니다. 아래 순서는 업무 흐름이며 자동으로 연결된 파이프라인은 아닙니다. 도구 사이에 자료를 옮길 때 식별자·단위·연도·분류를 확인하세요.
+
+| 필요 | 도구 |
+|---|---|
+| 공식 통계 수집 | [kr-sti-data](https://github.com/parkjui92/kr-sti-data) |
+| 과제번호로 논문 추적 | [kr-grant-trace](https://github.com/parkjui92/kr-grant-trace) |
+| 기술 분야의 논문·국내 특허 동향 | [sci-concentration](https://github.com/parkjui92/sci-concentration) |
+| 논리모형·성과지표 설계 점검 | [rnd-program-logic](https://github.com/parkjui92/rnd-program-logic) |
+| 인과효과 추정 전 설계 점검 | [policy-did](https://github.com/parkjui92/policy-did) |
+| AI와 평가 문서 검토 | [rnd-eval-skills](https://github.com/parkjui92/rnd-eval-skills) |
+| 예산표 금액 대조 | [won-diff](https://github.com/parkjui92/won-diff) |
 
 ## 라이선스
 

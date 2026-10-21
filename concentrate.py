@@ -2,8 +2,8 @@
 """sci-concentration — 키워드 하나로 논문 추이·국가/기관 집중도를 표와 그래프로.
 
 데이터: OpenAlex 공개 API(키 없이 동작, https://api.openalex.org). group_by 집계 API만 써서
-키워드 1건당 호출 4회(--quick) 또는 4 + 연도 수(기본: 연도별 국가 순위)를 쓴다.
-특허는 키 없는 공개 경로가 없어 이 도구에 들어 있지 않다(README 참조).
+키워드 1건당 최대 5회(--quick) 또는 5 + 연도 수(기본: 연도별 국가 순위)를 쓴다.
+--patents 를 주면 별도 KIPRIS Plus 키로 국내 특허를 함께 조회한다.
 
 사용:
   python3 -I concentrate.py "AI semiconductor" --years 2015-2025
@@ -33,7 +33,7 @@ from pathlib import Path
 
 API = "https://api.openalex.org/works"
 TOOL_DIR = Path(__file__).resolve().parent
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 UA = "sci-concentration/0.2 (https://github.com/parkjui92; local tool)"
 KR = "KR"
 
@@ -68,7 +68,7 @@ def read_key_file() -> str:
 
 def safe_dirname(s: str) -> str:
     s = re.sub(r"[\\/:*?\"<>|]+", "_", s).strip()
-    return s[:60] or "keyword"
+    return s[:60] if s and s not in {".", ".."} else "keyword"
 
 
 # ----------------------------------------------------------------------------- API
@@ -322,6 +322,18 @@ def main():
         ap.error("키워드를 하나 이상 주세요 (또는 --selftest)")
     if a.query and len(a.keyword) > 1:
         ap.error("--query 는 키워드가 하나일 때만 쓸 수 있습니다")
+    try:
+        y0, y1 = (int(x) for x in a.years.split("-"))
+        if not 1000 <= y0 <= y1 <= 9999:
+            raise ValueError
+    except ValueError:
+        ap.error("--years 는 시작연도-종료연도 형식이며 시작연도가 더 클 수 없습니다")
+    if a.max_pages < 1:
+        ap.error("--max-pages 는 1 이상이어야 합니다")
+    for kw in a.keyword:
+        label, query = parse_keyword(kw, a.query, a.loose)
+        if not label.strip() or not query.strip().strip('"'):
+            ap.error("라벨과 검색어는 비어 있을 수 없습니다")
     rc = 0
     for kw in a.keyword:
         r = run_one(kw, a)

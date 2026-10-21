@@ -326,10 +326,19 @@ def main():
     a = ap.parse_args()
     if a.selftest:
         return selftest()
-    if not a.term:
+    if not a.term or not a.term.strip():
         ap.error("검색어가 필요합니다")
-    y0, y1 = [int(x) for x in a.years.split("-")]
-    label = a.label or a.term
+    try:
+        y0, y1 = (int(x) for x in a.years.split("-"))
+        if not 1000 <= y0 <= y1 <= 9999:
+            raise ValueError
+    except ValueError:
+        ap.error("--years 는 시작연도-종료연도 형식이며 시작연도가 더 클 수 없습니다")
+    if a.max_pages < 1:
+        ap.error("--max-pages 는 1 이상이어야 합니다")
+    label = (a.label or a.term).strip()
+    if label in {".", "..", ""}:
+        ap.error("라벨은 일반 폴더명이어야 합니다")
     out = Path(a.out) if a.out else Path.cwd() / "out" / re.sub(r"[\\/:*?\"<>|]+", "_", label)
     r = run(label, a.term, list(range(y0, y1 + 1)), a.field, out, a.max_pages, no_chart=a.no_chart)
     print(f"완료: {out}  (출원 {r['total']:,}건 · 표본 {r['n_rec']:,}건 {r['coverage']}% · 호출 {r['calls']}회 · {r['sec']}s · 글꼴 경고 {len(r['font_warn'])})")
