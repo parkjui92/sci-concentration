@@ -210,4 +210,4 @@ echo "..." > ~/.config/sci-concentration/openalex.key && chmod 600 ~/.config/sci
 
 ## 라이선스
 
-MIT (소프트웨어). 데이터는 OpenAlex(CC0)에서 조회한 것이며 각 산출물에 조회 URL·조회일이 남습니다.
+MIT (소프트웨어). 논문 데이터는 OpenAlex(CC0), 특허 데이터는 KIPRIS Plus 이용약관을 따르며 각 산출물에 조회 URL·조회일이 남습니다. 자세한 것은 [DATA_LICENSE.md](DATA_LICENSE.md).
